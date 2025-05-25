@@ -4,7 +4,7 @@ const ResponseDelay = ({response, loading}) => {
     <div className="mt-6">
         {
             loading ? (
-                <div className="flex-items-center gap-4">
+                <div className="flex items-center gap-4">
                     <span className="loading loading-spinner loading-lg"></span>
                     <span>Crafting Your Answer....</span>
                 </div>
