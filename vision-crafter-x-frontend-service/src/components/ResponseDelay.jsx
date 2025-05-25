@@ -1,15 +1,15 @@
+import { formatResponseHTML } from "../utils/formatResponse"
 
 const ResponseDelay = ({response, loading}) => {
+    const formattedHTML = formatResponseHTML(response)
   return (
     <div className="mt-6">
         {
-            loading ? (
-                <div className="flex items-center gap-4">
+            loading ? (<div className="flex items-center gap-4">
                     <span className="loading loading-spinner loading-lg"></span>
                     <span>Crafting Your Answer....</span>
-                </div>
-            ) : (
-                <p className="p-3 rounded-md">{ response || "Welcome to VisionCrafterX" }</p>
+                </div>) : (
+                response ? (<p className="p-3 rounded-md" dangerouslySetInnerHTML={{ __html: formattedHTML }}></p>) : (<p>Welcome to VisionCrafterX</p>)
             )
         }
     </div>

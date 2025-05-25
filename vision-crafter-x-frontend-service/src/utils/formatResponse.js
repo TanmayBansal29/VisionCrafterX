@@ -1,7 +1,7 @@
-function formatResponseHTML(text) {
+export function formatResponseHTML(text) {
     const lines = text.split('\n').filter(line => line.trim() !== "")
 
-    let html = `<ol> class="list-decimal list-inside space-y-2`
+    let html = `<ol> `
     lines.forEach(line => {
         html += `<li>${line}</li>`
     });
