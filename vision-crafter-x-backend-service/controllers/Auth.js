@@ -1,5 +1,7 @@
 const User = require("../models/User")
 const bcrypt = require("bcryptjs")
+const jwt = require("jsonwebtoken")
+require("dotenv").config()
 
 exports.register = async(req, res) => {
     try {
@@ -54,7 +56,58 @@ exports.register = async(req, res) => {
         console.log("Error while registering user: ", error)
         return res.status(500).json({
             success: false,
-            message: "Something went wrong registering user"
+            message: "Something went wrong registering user, Please try again"
+        })
+    }
+}
+
+exports.login = async (req, res) => {
+    try {
+        const {username, password} = req.body
+        if(!username || !password) {
+            return res.status(400).json({
+                success: false,
+                message: "Please enter all the details"
+            })
+        }
+
+        const existingUser = await User.findOne({username})
+        if(!existingUser) {
+            return res.status(404).json({
+                success: false,
+                message: "No User found with this username"
+            })
+        }
+
+        if(await bcrypt.compare(password, existingUser.password)){
+            const token = jwt.sign(
+                {username: existingUser.username, email: existingUser.email, id: existingUser._id},
+                process.env.JWT_SECRET,
+                {expiresIn: "4h"}
+            )
+
+            const options = {
+                expires: new Date(Date.now() + 3 * 34 * 60 * 60 * 1000),
+            }
+
+            const {password: _, ...userData} = existingUser
+            res.cookie("token", token, options).status(200).json({
+                success: true,
+                token,
+                data: userData,
+                message: "Login Successful"
+            })
+        } else {
+            return res.status(400).json({
+                success: false,
+                message: "Incorrect Password"
+            })
+        }
+    } catch (error) {
+        console.log("Error while logging the user", error)
+        return res.status(500).json({
+            success: false,
+            message: "Something went wrong logging the user. Please try again"
         })
     }
 }
