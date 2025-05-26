@@ -1,9 +1,30 @@
+import axios from 'axios'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { BASE_URL } from '../utils/constants'
+import { useDispatch } from 'react-redux'
+import { addUser } from '../utils/userSlice'
 
 const LoginForm = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const [error, setError] = useState("")
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const handleLogin = async () => {
+        try {
+            const res = await axios.post(BASE_URL + "/user/login", {
+                username,
+                password
+            }, {withCredentials: true})
+            dispatch(addUser(res.data))
+            return navigate("/dashboard")
+        } catch (error) {
+            setError(error?.response?.data?.message || "Something Went Wrong")
+            console.log("Error Occured: ", error)
+        }
+    }
 
   return (
     <div className="flex h-[700px] my-16 rounded-xl shadow-lg w-full overflow-hidden max-w-[1600px] mx-auto">
@@ -40,7 +61,7 @@ const LoginForm = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Password" />
-            <button class="btn btn-primary w-full mb-4">Login</button>
+            <button class="btn btn-primary w-full mb-4" onClick={handleLogin}>Login</button>
             <div className="text-center text-sm text-gray-700 flex justify-center gap-2">
                 <p>Not Having an Account</p>
                 <Link to="/register" className="text-blue-600 hover:underline">Create Account</Link>
