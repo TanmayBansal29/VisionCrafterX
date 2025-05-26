@@ -18,6 +18,7 @@ const LoginForm = () => {
                 username,
                 password
             }, {withCredentials: true})
+            localStorage.setItem("user", JSON.stringify(res.data.data))
             dispatch(addUser(res.data))
             return navigate("/dashboard")
         } catch (error) {
@@ -61,6 +62,7 @@ const LoginForm = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Password" />
+            <p className='text-red-900'>{error}</p>
             <button class="btn btn-primary w-full mb-4" onClick={handleLogin}>Login</button>
             <div className="text-center text-sm text-gray-700 flex justify-center gap-2">
                 <p>Not Having an Account</p>
