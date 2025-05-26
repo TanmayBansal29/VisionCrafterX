@@ -25,7 +25,7 @@ const RegistrationForm = () => {
             })
             return navigate("/login")
         } catch (error) {
-            setError(error?.response?.data || "Something Went Wrong")
+            setError(error?.response?.data?.message || "Something Went Wrong")
             console.log("Error Occured: ", error)
         }
     }

@@ -27,6 +27,7 @@ const LoginForm = () => {
                 </div>
         </div>
 
+        {/* Right Panel */}
         <div className="w-1/4 bg-white flex flex-col justify-center items-center p-10">
             <p className="text-2xl text-gray-700 font-bold text-center mb-6">Login Now</p>
             <input type="username" 
@@ -42,7 +43,7 @@ const LoginForm = () => {
             <button class="btn btn-primary w-full mb-4">Login</button>
             <div className="text-center text-sm text-gray-700 flex justify-center gap-2">
                 <p>Not Having an Account</p>
-                <Link to="/resigter" className="text-blue-600 hover:underline">Create Account</Link>
+                <Link to="/register" className="text-blue-600 hover:underline">Create Account</Link>
             </div>
         </div>
     </div>
