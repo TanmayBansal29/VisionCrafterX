@@ -1,11 +1,13 @@
 const express = require("express")
 const { GoogleGenerativeAI } = require("@google/generative-ai")
 const cors = require("cors")
+const AuthRoutes = require("./routes/Auth")
 
 const app = express()
 require("dotenv").config()
 app.use(express.json())
 app.use(cors())
+app.use("/api/v1/user", AuthRoutes)
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API)
 
