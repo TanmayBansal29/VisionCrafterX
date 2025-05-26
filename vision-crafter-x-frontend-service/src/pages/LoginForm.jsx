@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const LoginForm = () => {
-    const [email, setEmail] = useState("")
+    const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
 
   return (
@@ -29,11 +29,11 @@ const LoginForm = () => {
 
         <div className="w-1/4 bg-white flex flex-col justify-center items-center p-10">
             <p className="text-2xl text-gray-700 font-bold text-center mb-6">Login Now</p>
-            <input type="email" 
+            <input type="username" 
                     className="input input-primary w-full mb-4" 
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Email Address" />
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="Username" />
             <input type="password" 
                     className="input input-primary w-full mb-4" 
                     value={password}
