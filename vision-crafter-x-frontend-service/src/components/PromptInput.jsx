@@ -10,7 +10,7 @@ const PromptInput = (props) => {
                 setResponse("Prompt cannot be empty")
                 return
             }
-            const res = await axios.post("http://localhost:4000/api/chat", {
+            const res = await axios.post("http://localhost:4000/api/v1/chat/AI", {
                 prompt: prompt
             });
             setResponse(res.data.data)
