@@ -7,7 +7,7 @@ exports.register = async(req, res) => {
         if(!firstName || !lastName || !username || !email || !password || !confirmPassword) {
             return res.status(400).json({
                 success: false,
-                message: "Please Enter all detials"
+                message: "Please Enter all details"
             })
         }
 
@@ -49,7 +49,7 @@ exports.register = async(req, res) => {
             message: "User Registered Successfully",
             data: user
         })
-        
+
     } catch (error) {
         console.log("Error while registering user: ", error)
         return res.status(500).json({
