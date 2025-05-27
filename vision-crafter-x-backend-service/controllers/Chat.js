@@ -25,3 +25,24 @@ exports.chatAI = async (req, res) => {
         })
     }
 }
+
+// Controller to get the config (Categories, Styles) - Centralized Approach
+exports.getPromptConfig = async (req, res) => {
+    const categoriesAllowed = ["📝 Blog", "🐦 Social Media", "🧠 Idea Generator", "💼 Business", "🛠️ Coding", "📈 SEO", "⚙️ Custom Prompt"]
+    const stylesAllowed = ["Funny", "Mentor", "Professional"]
+
+    try {
+        return res.status(200).json({
+            success: true,
+            message: "Config Fetched",
+            categories: categoriesAllowed,
+            styles: stylesAllowed
+        })
+    } catch (error) {
+        console.log("Error fetching the config details: ", error)
+        return res.status(500).json({
+            success: false,
+            message: "Something went wrong fetching the config. Please try again"
+        })
+    }
+}
