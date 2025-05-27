@@ -62,11 +62,19 @@ exports.savePrompt = async (req, res) => {
 
         const {_id: userId} = req.user
 
-        if(!Array.isArray(output) || output.length === 0) {
-            return res.status(400).json({
+        let formattedOutput;
+
+        if (Array.isArray(output)) {
+            formattedOutput = output.map(item =>
+                typeof item === 'string' ? { text: item } : item
+            );
+        } else if (typeof output === 'string') {
+            formattedOutput = [{ text: output }];
+        } else {
+            return res.status(400).json({ 
                 success: false,
-                message: "Output must be a non-empty array"
-            })
+                message: "'output' must be a string or array" 
+            });
         }
 
         const prompt = await Prompt.create({
