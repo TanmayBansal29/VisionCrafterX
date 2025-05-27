@@ -4,13 +4,12 @@ import { BsFillLightningFill } from "react-icons/bs"
 
 const SidePanel = () => {
     const user = useSelector((store) => store.user)
-    console.log(user)
   return (
     <div className='flex flex-col w-60 bg-base-300 h-screen p-3 shadow-lg'>
         <div className='flex gap-4 items-center bg-base-200 p-3 rounded-md'>
             {/* Photo */}
             <div className="avatar">
-                <div className="w-12 rounded-full border-2 border-blue-500 overflow-hidden">
+                <div className="w-12 rounded-full border-2 border-blue-600 overflow-hidden">
                     <img src={`https://api.dicebear.com/5.x/initials/svg?seed=${user.data.firstName} ${user.data.lastName}`} />
                 </div>
             </div>
