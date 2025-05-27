@@ -1,15 +1,14 @@
 import LoginForm from "./pages/LoginForm"
 import MainPage from "./pages/MainPage"
 import RegistrationForm from "./pages/RegistrationForm"
-import TextGenerateBox from "./pages/TextGenerateBox"
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
-import {Provider, useDispatch} from "react-redux"
-import appStore from "./utils/appStore"
+import { useDispatch} from "react-redux"
 import Dashboard from "./pages/Dashboard"
 import DashboardHome from "./components/DashboardHome"
 import RequireAuth from "./routes/RequireAuth"
 import { useEffect } from "react"
 import { addUser } from "./utils/userSlice"
+import PromptStudio from "./components/PromptStudio"
 
 function App() {
 
@@ -34,7 +33,7 @@ function App() {
             <Route element={<RequireAuth />}>
               <Route path="/dashboard" element={<Dashboard />}>
                 <Route index element={<DashboardHome />}/>
-                <Route path="chat" element={<TextGenerateBox/>} />
+                <Route path="prompt-studio" element={<PromptStudio/>} />
               </Route>
             </Route>
           </Routes>

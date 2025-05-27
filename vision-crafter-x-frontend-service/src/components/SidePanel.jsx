@@ -21,10 +21,10 @@ const SidePanel = () => {
         <hr className='my-4 border-gray-300'/>
         <div className='flex flex-col gap-2'>
             <p className='font-bold text-xl mb-1'>Core Features</p>
-            <Link className='hover:bg-blue-100 hover:text-black rounded-md px-3 py-2 cursor-pointer transition duration-200'>🏡 Dashboard Home</Link>
+            <Link className='hover:bg-blue-100 hover:text-black rounded-md px-3 py-2 cursor-pointer transition duration-200' to="/dashboard">🏡 Dashboard Home</Link>
             <div className='flex gap-2 items-center hover:bg-blue-100 hover:text-black rounded-md px-3 py-2 cursor-pointer transition duration-200'>
                 <BsFillLightningFill style={{color: "gold"}}/>
-                <Link>Prompt Studio</Link>
+                <Link to="/dashboard/prompt-studio">Prompt Studio</Link>
             </div>
             <Link className='hover:bg-blue-100 hover:text-black rounded-md px-3 py-1.5 cursor-pointer transition duration-200'>📝 AI Blog Writer</Link>
             <Link className='hover:bg-blue-100 hover:text-black rounded-md px-3 py-1.5 cursor-pointer transition duration-200'>👨‍🏫 AI Tutor</Link>
