@@ -88,10 +88,7 @@ exports.login = async (req, res) => {
             )
 
             const options = {
-                expires: new Date(Date.now() + 3 * 34 * 60 * 60 * 1000),
-                httpOnly: true,
-                secure: process.env.NODE_ENV === "Production",
-                sameSite: "strict"
+                expires: new Date(Date.now() + 3 * 34 * 60 * 60 * 1000)
             }
 
             const {password: _, ...userData} = existingUser.toObject()

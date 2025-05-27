@@ -4,7 +4,9 @@ require("dotenv").config()
 exports.auth = async(req, res, next) => {
     try {
         // Extract the token
-        const token = req.cookies?.token || req.body?.token || req.header("Authorization").replace("Bearer ", "")
+        const cookies = req.cookies
+        const {token} = cookies
+        // const token = req.cookies?.token || req.body?.token || (req.header("Authorization").replace("Bearer ", "") || "")
 
         if(!token) {
             return res.status(401).json({
@@ -26,6 +28,7 @@ exports.auth = async(req, res, next) => {
             })
         }
     } catch (error) {
+        console.log("Error Validating: ", error)
         return res.status(401).json({
             success: false,
             message: "Something went wrong while validating the user"

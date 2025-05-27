@@ -1,5 +1,6 @@
 const express = require("express")
 const cors = require("cors")
+const cookieParser = require("cookie-parser")
 const AuthRoutes = require("./routes/Auth")
 const ChatAIRoutes = require("./routes/Chat")
 const connectDB = require("./config/database")
@@ -7,6 +8,7 @@ const connectDB = require("./config/database")
 const app = express()
 require("dotenv").config()
 app.use(express.json())
+app.use(cookieParser())
 app.use(cors({
     origin: "http://localhost:5173",
     credentials: true
