@@ -11,7 +11,7 @@ const PromptInput = (props) => {
             }
             const res = await axios.post("http://localhost:4000/api/v1/chat/AI", {
                 prompt: prompt
-            });
+            }, {withCredentials: true});
             setResponse(res.data.data)
             setPrompt("")
         } catch (error) {

@@ -101,3 +101,37 @@ exports.savePrompt = async (req, res) => {
         })
     }
 }
+
+// Controller to fetch the prompt from database
+exports.fetchPrompts = async (req, res) => {
+    try {
+        const userId = req.params.id
+        if(!userId) {
+            return res.status(400).json({
+                success: false,
+                message: "No User Found"
+            })
+        }
+
+        const prompts = await Prompt.find({createdBy: userId}).sort({createdAt: -1})
+        if(prompts.length === 0) {
+            return res.status(400).json({
+                success: false,
+                message: "No Prompts Found for this user"
+            })
+        }
+
+        return res.status(200).json({
+            success: true,
+            message: "Prompts Fetched Successfully",
+            data: prompts
+        })
+
+    } catch (error) {
+        console.log("Error while fetching the prompts: ", error)
+        return res.status(500).json({
+            success: false,
+            message: "Something went wrong while fetching the prompts"
+        })
+    }
+}
