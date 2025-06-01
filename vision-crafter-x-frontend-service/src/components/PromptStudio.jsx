@@ -1,4 +1,6 @@
 import DateTimeShow from "./DateTimeShow"
+import LastPrompts from "./LastPrompts"
+import PromptStudioButtonsSection from "./PromptStudioButtonsSection"
 import { PromptStudioPromptSection } from "./PromptStudioPromptSection"
 
 const PromptStudio = () => {
@@ -11,7 +13,9 @@ const PromptStudio = () => {
         </div>
 
         <div className="flex w-full">
-                <PromptStudioPromptSection />
+          <PromptStudioButtonsSection />
+          <PromptStudioPromptSection />
+          <LastPrompts />  
         </div>
     </div>
   )

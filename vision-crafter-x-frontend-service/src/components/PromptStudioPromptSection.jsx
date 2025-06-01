@@ -28,37 +28,13 @@ export const PromptStudioPromptSection = () => {
     fetchConfigProperties();
   }, [])
 
-  const handleFavoutire = async () => {
-
-  }
-
   return (
-    <div className="flex flex-col h-[750px] w-3/4 bg-white ">
-        <div className="flex justify-center gap-10 mt-10">
-            <select class="select select-success">
-              <option disabled selected>Pick Category</option>
-              {
-                config.categories.map((category, index) => {
-                  return <option key={Math.random()}>{category}</option>
-                })
-              }
-            </select>
-
-            <select class="select select-info">
-              <option disabled selected>Pick Style for Answer</option>
-              {
-                config.styles.map((style, index) => {
-                  return <option key={Math.random()}>{style}</option>
-                })
-              }
-            </select>
-            <button className="btn btn-primary w-[250px]">Save to Favourite</button>
-        </div>
-
-        <div>
-          <div>
-            <ResponseDelay response={response} loading={loading}/>
-            <PromptInput 
+    <div className="flex flex-col h-[750px] w-1/3 border rounded-lg overflow-hidden">
+      <div className="flex-1 overflow-y-auto p-4">
+        <ResponseDelay response={response} loading={loading}/>
+      </div>
+      <div className="border-t p-2">
+        <PromptInput 
                 prompt={prompt} 
                 setPrompt={setPrompt} 
                 response={response} 
@@ -66,11 +42,7 @@ export const PromptStudioPromptSection = () => {
                 loading={loading} 
                 setLoading={setLoading}
             />
-          </div>
-          <div>
-
-          </div>
-        </div>
+      </div>
     </div>
   )
 }

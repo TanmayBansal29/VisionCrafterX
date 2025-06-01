@@ -10,6 +10,7 @@ const LastPrompts = () => {
     const fetchPrompts = async () => {
       try {
         const res = await axios.get(BASE_URL + "/fetch/prompts", {withCredentials: true})
+        console.log(res.data.data)
       } catch (error) {
         console.log("Error fetching the prompts - frontend: ", error)
       }
