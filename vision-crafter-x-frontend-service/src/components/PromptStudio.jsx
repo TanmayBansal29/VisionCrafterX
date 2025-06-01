@@ -1,4 +1,5 @@
 import DateTimeShow from "./DateTimeShow"
+import { PromptStudioPromptSection } from "./PromptStudioPromptSection"
 
 const PromptStudio = () => {
   return (
@@ -11,7 +12,7 @@ const PromptStudio = () => {
 
         <div>
             <div>
-                
+                <PromptStudioPromptSection />
             </div>
         </div>
     </div>
