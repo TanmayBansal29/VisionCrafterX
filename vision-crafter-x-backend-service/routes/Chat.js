@@ -1,5 +1,5 @@
 const express = require("express")
-const { chatAI, getPromptConfig, savePrompt } = require("../controllers/Chat")
+const { chatAI, getPromptConfig, savePrompt, fetchPrompts } = require("../controllers/Chat")
 const { auth } = require("../middlewares/auth")
 const router = express.Router()
 
@@ -11,5 +11,8 @@ router.get("/prompt-config", getPromptConfig)
 
 // Route for saving the prompt to the database
 router.post("/save/prompt", auth, savePrompt)
+
+// Route for fetching the prompts from database
+router.get("/fetch/prompts", auth, fetchPrompts)
 
 module.exports = router

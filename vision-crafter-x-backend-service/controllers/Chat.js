@@ -60,7 +60,7 @@ exports.savePrompt = async (req, res) => {
             })
         }
 
-        const {_id: userId} = req.user
+        const {id: userId} = req.user
 
         let formattedOutput;
 
@@ -105,7 +105,7 @@ exports.savePrompt = async (req, res) => {
 // Controller to fetch the prompt from database
 exports.fetchPrompts = async (req, res) => {
     try {
-        const userId = req.params.id
+        const userId = req.user.id
         if(!userId) {
             return res.status(400).json({
                 success: false,
