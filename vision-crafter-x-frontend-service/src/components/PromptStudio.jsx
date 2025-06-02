@@ -25,7 +25,9 @@ const PromptStudio = () => {
         <div className="flex w-full mt-6 gap-5">
           <PromptStudioButtonsSection 
             prompt={prompt}
+            setPrompt={setPrompt}
             response={response}
+            setResponse={setResponse}
             title={title}
             setTitle={setTitle}
             category={category}
