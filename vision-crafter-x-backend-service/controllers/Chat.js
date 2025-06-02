@@ -53,7 +53,7 @@ exports.getPromptConfig = async (req, res) => {
 exports.savePrompt = async (req, res) => {
     try {
         const {title, category, input, output, style, isFavorite} = req.body
-        if(!title || !category || !input || !output) {
+        if(!title || !category || !input || !output || !style) {
             return res.status(400).json({
                 success: false,
                 message: "Please fill all the details"

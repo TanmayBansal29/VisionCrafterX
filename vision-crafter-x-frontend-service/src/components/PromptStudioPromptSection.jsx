@@ -2,9 +2,7 @@ import { useState } from "react"
 import PromptInput from "./PromptInput"
 import ResponseDelay from "./ResponseDelay"
 
-export const PromptStudioPromptSection = () => {
-  const [prompt, setPrompt] = useState("")
-  const [response, setResponse] = useState("")
+export const PromptStudioPromptSection = ({prompt, setPrompt, response, setResponse}) => {
   const [loading, setLoading] = useState(false)
 
   return (

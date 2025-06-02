@@ -1,11 +1,9 @@
 import axios from "axios"
 import { useEffect } from "react"
-import { useState } from "react"
 import { BASE_URL } from "../utils/constants"
 import PromptBox from "./PromptBox"
 
-const LastPrompts = () => {
-  const [prompts, setPrompts] = useState()
+const LastPrompts = ({prompts, setPrompts}) => {
 
   useEffect(() => {
     const fetchPrompts = async () => {

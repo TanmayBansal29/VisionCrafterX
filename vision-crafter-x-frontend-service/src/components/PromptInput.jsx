@@ -13,7 +13,6 @@ const PromptInput = (props) => {
                 prompt: prompt
             }, {withCredentials: true});
             setResponse(res.data.data)
-            setPrompt("")
         } catch (error) {
             console.log("Error: ", error)
             setResponse("Something Went Wrong")
