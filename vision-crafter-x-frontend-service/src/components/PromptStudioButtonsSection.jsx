@@ -5,10 +5,6 @@ import { BASE_URL } from "../utils/constants"
 
 const PromptStudioButtonsSection = () => {
   const [config, setConfig] = useState({categories: [], styles: []})
-  const [isFavourite, setIsFavourite] = useState(false)
-  const [prompt, setPrompt] = useState("")
-  const [response, setResponse] = useState("")
-  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     const fetchConfigProperties = async () => {

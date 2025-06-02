@@ -1,32 +1,11 @@
-import { useEffect } from "react"
 import { useState } from "react"
-import axios from 'axios'
-import { BASE_URL } from "../utils/constants"
 import PromptInput from "./PromptInput"
 import ResponseDelay from "./ResponseDelay"
 
 export const PromptStudioPromptSection = () => {
-  const [config, setConfig] = useState({categories: [], styles: []})
-  const [isFavourite, setIsFavourite] = useState(false)
   const [prompt, setPrompt] = useState("")
   const [response, setResponse] = useState("")
   const [loading, setLoading] = useState(false)
-
-  useEffect(() => {
-    const fetchConfigProperties = async () => {
-      try {
-        const response = await axios.get(BASE_URL + '/prompt-config' ,{withCredentials: true})
-        setConfig({
-          categories: response.data.categories,
-          styles: response.data.styles
-        })
-      } catch (err) {
-        console.log("Error Fetching Config: ", err)
-      }
-    }
-
-    fetchConfigProperties();
-  }, [])
 
   return (
     <div className="flex flex-col h-[775px] w-1/3 bg-black/70 backdrop-blur-md text-white border border-gray-500 rounded-xl shadow-2xl overflow-hidden">
