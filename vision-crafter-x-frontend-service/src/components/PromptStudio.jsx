@@ -12,7 +12,7 @@ const PromptStudio = () => {
             <DateTimeShow />
         </div>
 
-        <div className="flex w-full">
+        <div className="flex w-full mt-6 gap-5">
           <PromptStudioButtonsSection />
           <PromptStudioPromptSection />
           <LastPrompts />  

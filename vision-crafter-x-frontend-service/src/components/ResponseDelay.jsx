@@ -11,7 +11,7 @@ const ResponseDelay = ({response, loading}) => {
             </div>) : (
               response ? (<div className="whitespace-pre-wrap">
                   <p dangerouslySetInnerHTML={{ __html: formattedHTML }}></p>
-                </div>) : (<p>Welcome to VisionCrafterX</p>)
+                </div>) : (<p className="text-xl font-semibold text-center">Welcome to VisionCrafterX</p>)
             )
         }
     </div>
